@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Каталог и ГОСТ — KAZ MC GROUP</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
@@ -17,56 +17,63 @@
       --text-muted: #94a3b8;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Montserrat', sans-serif; background: var(--bg-main); color: var(--text-main); line-height: 1.6; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--bg-main); color: var(--text-main); line-height: 1.5; }
     a { text-decoration: none; color: inherit; }
 
     header {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(9, 13, 20, 0.92); backdrop-filter: blur(10px);
-      border-bottom: 2px solid var(--border); padding: 15px 5%;
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
+      background: rgba(9, 13, 20, 0.95); backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--border); padding: 12px 16px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
     }
-    .logo-wrap { display: flex; align-items: center; gap: 12px; }
-    .logo-wrap img { height: 46px; width: auto; }
-    .logo-fallback { background: linear-gradient(135deg, var(--turquoise), #0077ff); color: #000; font-weight: 900; padding: 8px 12px; border-radius: 4px; }
-    .brand-name { font-size: 20px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; }
+    .logo-wrap { display: flex; align-items: center; gap: 8px; }
+    .logo-wrap img { height: 38px; width: auto; }
+    .logo-fallback { background: linear-gradient(135deg, var(--turquoise), #0077ff); color: #000; font-weight: 900; padding: 6px 10px; font-size: 14px; border-radius: 4px; }
+    .brand-name { font-size: 16px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
     .brand-name span { color: var(--turquoise); }
 
-    nav { display: flex; gap: 25px; align-items: center; flex-wrap: wrap; }
-    nav a { font-weight: 700; font-size: 14px; text-transform: uppercase; color: var(--text-muted); transition: 0.25s; }
-    nav a:hover, nav a.active { color: var(--turquoise); }
+    nav { display: flex; gap: 15px; align-items: center; width: 100%; justify-content: center; padding-top: 5px; border-top: 1px solid var(--border); }
+    nav a { font-weight: 700; font-size: 12px; text-transform: uppercase; color: var(--text-muted); }
+    nav a.active { color: var(--turquoise); }
 
-    .header-actions { display: flex; align-items: center; gap: 15px; }
     .lang-switch { display: flex; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-    .lang-btn { background: var(--bg-card); color: var(--text-muted); border: none; padding: 6px 12px; font-weight: 800; cursor: pointer; font-family: inherit; }
+    .lang-btn { background: var(--bg-card); color: var(--text-muted); border: none; padding: 5px 8px; font-weight: 800; cursor: pointer; font-size: 11px; font-family: inherit; }
     .lang-btn.active { background: var(--turquoise); color: #000; }
 
     .btn-turquoise {
       background: var(--turquoise); color: #06090e; font-weight: 800; text-transform: uppercase;
-      letter-spacing: 1px; padding: 12px 22px; border: none; border-radius: 4px; cursor: pointer;
-      box-shadow: 0 0 18px var(--turquoise-glow); display: inline-flex; align-items: center; justify-content: center;
-      font-size: 13px; transition: 0.25s;
+      padding: 12px 18px; border: none; border-radius: 6px; cursor: pointer;
+      box-shadow: 0 0 15px var(--turquoise-glow); display: inline-flex; align-items: center; justify-content: center;
+      font-size: 13px; width: 100%; text-align: center;
     }
-    .btn-turquoise:hover { background: var(--turquoise-dark); transform: translateY(-2px); }
 
-    .container { max-width: 1280px; margin: 0 auto; padding: 60px 5%; }
-    .page-title { font-size: clamp(26px, 4vw, 44px); font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 30px 16px; }
+    .page-title { font-size: 24px; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
     .page-title span { color: var(--turquoise); }
-    .page-sub { color: var(--text-muted); max-width: 760px; margin-bottom: 45px; }
+    .page-sub { color: var(--text-muted); font-size: 13px; margin-bottom: 30px; }
 
-    .catalog-list { display: grid; gap: 24px; }
+    .catalog-list { display: grid; gap: 16px; }
     .cat-item {
       background: var(--bg-card); border: 1px solid var(--border);
-      border-left: 5px solid var(--turquoise); padding: 28px; border-radius: 6px;
-      display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+      border-left: 4px solid var(--turquoise); padding: 20px; border-radius: 6px;
+      display: flex; flex-direction: column; gap: 16px;
     }
-    .cat-item h3 { font-size: 22px; text-transform: uppercase; margin-bottom: 10px; color: var(--turquoise); }
-    .cat-item p { color: var(--text-muted); font-size: 14px; margin-bottom: 12px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag { background: #1a2433; border: 1px solid var(--border); padding: 4px 10px; font-size: 12px; font-weight: 700; border-radius: 4px; }
+    .cat-item h3 { font-size: 18px; text-transform: uppercase; color: var(--turquoise); margin-bottom: 8px; }
+    .cat-item p { color: var(--text-muted); font-size: 13px; margin-bottom: 12px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { background: #1a2433; border: 1px solid var(--border); padding: 4px 8px; font-size: 11px; font-weight: 700; border-radius: 4px; }
 
-    footer { background: #06090e; border-top: 2px solid var(--border); padding: 35px 5%; text-align: center; color: var(--text-muted); font-size: 13px; }
-    @media (max-width: 768px) { .cat-item { grid-template-columns: 1fr; } }
+    footer { background: #06090e; border-top: 2px solid var(--border); padding: 25px 16px; text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 40px; }
+
+    @media (min-width: 768px) {
+      header { padding: 15px 5%; }
+      nav { width: auto; border-top: none; padding-top: 0; gap: 25px; }
+      nav a { font-size: 14px; }
+      .container { padding: 60px 5%; }
+      .page-title { font-size: 36px; }
+      .cat-item { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 28px; gap: 24px; }
+      .cat-item .btn-turquoise { width: auto; }
+    }
   </style>
 </head>
 <body>
@@ -77,67 +84,64 @@
       <div id="logo-fb" class="logo-fallback" style="display:none;">KAZ MC</div>
       <div class="brand-name">KAZ <span>MC</span> GROUP</div>
     </a>
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('ru')" id="btn-ru">RU</button>
+      <button class="lang-btn" onclick="setLang('kz')" id="btn-kz">KZ</button>
+    </div>
     <nav>
       <a href="index.html" data-ru="Главная" data-kz="Басты бет">Главная</a>
       <a href="catalog.html" class="active" data-ru="Продукция и ГОСТ" data-kz="Өнімдер мен МЕМСТ">Продукция и ГОСТ</a>
-      <a href="order.html" data-ru="Заказать расчет" data-kz="Есептеуді тапсырыс беру">Заказать расчет</a>
+      <a href="order.html" data-ru="Заказать расчет" data-kz="Есептеу">Заказать расчет</a>
     </nav>
-    <div class="header-actions">
-      <div class="lang-switch">
-        <button class="lang-btn active" onclick="setLang('ru')" id="btn-ru">RU</button>
-        <button class="lang-btn" onclick="setLang('kz')" id="btn-kz">KZ</button>
-      </div>
-      <a href="order.html" class="btn-turquoise" data-ru="Заказать расчет" data-kz="Есептеу">Заказать расчет</a>
-    </div>
   </header>
 
   <div class="container">
     <h1 class="page-title" data-ru="Каталог <span>металлоконструкций</span>" data-kz="Металл конструкциялар <span>каталогы</span>">Каталог <span>металлоконструкций</span></h1>
-    <p class="page-sub" data-ru="Все работы выполняются согласно проектной документации (КМ, КМД) или по действующим ГОСТ и СНиП. На все виды конструкций предоставляется гарантия минимум 1 год." data-kz="Барлық жұмыстар жобалық құжаттамаға (КМ, КМД) немесе қолданыстағы МЕМСТ және ҚНжЕ сәйкес орындалады. Конструкциялардың барлық түрлеріне кемінде 1 жыл кепілдік беріледі.">Все работы выполняются согласно проектной документации (КМ, КМД) или по действующим ГОСТ и СНиП. На все виды конструкций предоставляется гарантия минимум 1 год.</p>
+    <p class="page-sub" data-ru="Работы выполняются по проектам (КМ, КМД), ГОСТ и СНиП. Гарантия от 1 года." data-kz="Жұмыстар жобалар (КМ, КМД), МЕМСТ және ҚНжЕ бойынша орындалады. Кепілдік 1 жылдан бастап.">Работы выполняются по проектам (КМ, КМД), ГОСТ и СНиП. Гарантия от 1 года.</p>
 
     <div class="catalog-list">
       <div class="cat-item">
         <div>
           <h3 data-ru="1. Быстровозводимые ангары и склады" data-kz="1. Тез салынатын ангарлар мен қоймалар">1. Быстровозводимые ангары и склады</h3>
-          <p data-ru="Проектирование, изготовление и монтаж теплых (из сэндвич-панелей) и холодных (из профлиста) ангаров, складов, зернохранилищ, СТО и производственных баз в Астане и по всему Казахстану." data-kz="Астанада және бүкіл Қазақстан бойынша жылы және суық ангарларды, қоймаларды, астық қоймаларын және өндірістік базаларды дайындау және монтаждау.">Проектирование, изготовление и монтаж теплых (из сэндвич-панелей) и холодных (из профлиста) ангаров, складов, зернохранилищ, СТО и производственных баз в Астане и по всему Казахстану.</p>
+          <p data-ru="Проектирование и монтаж теплых (сэндвич-панели) и холодных ангаров, складов, зернохранилищ в Астане и РК." data-kz="Астана және ҚР жылы және суық ангарларды, қоймаларды жобалау және монтаждау.">Проектирование и монтаж теплых (сэндвич-панели) и холодных ангаров, складов, зернохранилищ в Астане и РК.</p>
           <div class="tags">
             <span class="tag">ГОСТ 23118</span>
-            <span class="tag" data-ru="Гарантия от 1 года" data-kz="Кепілдік 1 жылдан">Гарантия от 1 года</span>
+            <span class="tag" data-ru="Гарантия 1+ год" data-kz="Кепілдік 1+ жыл">Гарантия 1+ год</span>
             <span class="tag" data-ru="Монтаж под ключ" data-kz="Кілтпен монтаждау">Монтаж под ключ</span>
           </div>
         </div>
-        <a href="order.html?type=Ангары и склады" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+        <a href="order.html?type=Ангары и склады" class="btn-turquoise" data-ru="Заказать расчет" data-kz="Есептеу">Заказать расчет</a>
       </div>
 
       <div class="cat-item">
         <div>
           <h3 data-ru="2. Несущие каркасы зданий" data-kz="2. Ғимараттардың тірек қаңқалары">2. Несущие каркасы зданий</h3>
-          <p data-ru="Изготовление колонн, ферм перекрытия, подкрановых балок, связей жесткости, ригелей и закладных деталей для коммерческого и промышленного строительства." data-kz="Коммерциялық және өнеркәсіптік құрылысқа арналған бағандарды, фермаларды, арқалықтарды және бекіту бөлшектерін дайындау.">Изготовление колонн, ферм перекрытия, подкрановых балок, связей жесткости, ригелей и закладных деталей для коммерческого и промышленного строительства.</p>
+          <p data-ru="Изготовление колонн, ферм перекрытия, подкрановых балок, связей жесткости." data-kz="Бағандарды, фермаларды, арқалықтарды дайындау.">Изготовление колонн, ферм перекрытия, подкрановых балок, связей жесткости.</p>
           <div class="tags">
             <span class="tag">СНиП РК</span>
-            <span class="tag">Сталь С245 / С345</span>
-            <span class="tag" data-ru="Контроль сварных швов" data-kz="Дәнекерлеу бақылауы">Контроль сварных швов</span>
+            <span class="tag">Сталь С245/С345</span>
+            <span class="tag" data-ru="Контроль швов" data-kz="Тігістерді бақылау">Контроль швов</span>
           </div>
         </div>
-        <a href="order.html?type=Каркасы зданий" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+        <a href="order.html?type=Каркасы зданий" class="btn-turquoise" data-ru="Заказать расчет" data-kz="Есептеу">Заказать расчет</a>
       </div>
 
       <div class="cat-item">
         <div>
-          <h3 data-ru="3. Навесы, лестницы, ворота и ограждающие конструкции" data-kz="3. Бастырмалар, баспалдақтар, қақпалар мен қоршаулар">3. Навесы, лестницы, ворота и ограждающие конструкции</h3>
-          <p data-ru="Навесы любой площади, маршевые и пожарные лестницы, площадки обслуживания, промышленные откатные/распашные ворота и нестандартные металлоизделия на заказ по чертежам." data-kz="Кез келген аумақтағы бастырмалар, марштық және өрт баспалдақтары, өнеркәсіптік қақпалар және сызбалар бойынша стандартты емес металл бұйымдары.">Навесы любой площади, маршевые и пожарные лестницы, площадки обслуживания, промышленные откатные/распашные ворота и нестандартные металлоизделия на заказ по чертежам.</p>
+          <h3 data-ru="3. Навесы, лестницы и ворота" data-kz="3. Бастырмалар, баспалдақтар мен қақпалар">3. Навесы, лестницы и ворота</h3>
+          <p data-ru="Навесы, маршевые и пожарные лестницы, откатные/распашные ворота и нестандартные МК." data-kz="Бастырмалар, марштық және өрт баспалдақтары, қақпалар және стандартты емес МК.">Навесы, маршевые и пожарные лестницы, откатные/распашные ворота и нестандартные МК.</p>
           <div class="tags">
-            <span class="tag" data-ru="По чертежам заказчика" data-kz="Тапсырыс берушінің сызбасы бойынша">По чертежам заказчика</span>
+            <span class="tag" data-ru="По вашим чертежам" data-kz="Сіздің сызбаларыңыз бойынша">По вашим чертежам</span>
             <span class="tag" data-ru="Антикоррозийная защита" data-kz="Коррозияға қарсы қорғаныс">Антикоррозийная защита</span>
           </div>
         </div>
-        <a href="order.html?type=Навесы / Лестницы / Ворота / Нестандартные МК" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+        <a href="order.html?type=Навесы / Лестницы / Ворота" class="btn-turquoise" data-ru="Заказать расчет" data-kz="Есептеу">Заказать расчет</a>
       </div>
     </div>
   </div>
 
   <footer>
-    © 2026 KAZ MC GROUP • г. Астана и весь Казахстан • WhatsApp / Telegram: +7 771 128 80 40
+    © 2026 KAZ MC GROUP • г. Астана • +7 771 128 80 40
   </footer>
 
   <script>

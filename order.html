@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заказать расчет — KAZ MC GROUP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #090d14;
+      --bg-card: #111823;
+      --border: #1f2b3d;
+      --turquoise: #00e5ff;
+      --turquoise-dark: #00b8cc;
+      --turquoise-glow: rgba(0, 229, 255, 0.25);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--bg-main); color: var(--text-main); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(9, 13, 20, 0.92); backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--border); padding: 15px 5%;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
+    }
+    .logo-wrap { display: flex; align-items: center; gap: 12px; }
+    .logo-wrap img { height: 46px; width: auto; }
+    .logo-fallback { background: linear-gradient(135deg, var(--turquoise), #0077ff); color: #000; font-weight: 900; padding: 8px 12px; border-radius: 4px; }
+    .brand-name { font-size: 20px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; }
+    .brand-name span { color: var(--turquoise); }
+
+    nav { display: flex; gap: 25px; align-items: center; flex-wrap: wrap; }
+    nav a { font-weight: 700; font-size: 14px; text-transform: uppercase; color: var(--text-muted); transition: 0.25s; }
+    nav a:hover, nav a.active { color: var(--turquoise); }
+
+    .lang-switch { display: flex; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+    .lang-btn { background: var(--bg-card); color: var(--text-muted); border: none; padding: 6px 12px; font-weight: 800; cursor: pointer; font-family: inherit; }
+    .lang-btn.active { background: var(--turquoise); color: #000; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 60px 5%; }
+    .form-card {
+      background: var(--bg-card); border: 2px solid var(--border);
+      border-top: 4px solid var(--turquoise); padding: 40px; border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    }
+    .form-card h1 { font-size: clamp(24px, 3.5vw, 34px); text-transform: uppercase; margin-bottom: 10px; }
+    .form-card h1 span { color: var(--turquoise); }
+    .form-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 30px; }
+
+    .form-group { margin-bottom: 20px; }
+    label { display: block; font-weight: 700; font-size: 13px; text-transform: uppercase; margin-bottom: 8px; color: var(--turquoise); }
+    input[type="text"], input[type="tel"], select, textarea {
+      width: 100%; background: #090d14; border: 1px solid var(--border);
+      color: #fff; padding: 14px; border-radius: 4px; font-family: inherit; font-size: 14px;
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--turquoise); }
+    textarea { min-height: 120px; resize: vertical; }
+
+    .file-box {
+      border: 2px dashed var(--turquoise); background: rgba(0, 229, 255, 0.05);
+      padding: 20px; text-align: center; border-radius: 6px; cursor: pointer;
+    }
+    .file-box input { display: none; }
+    .file-hint { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+
+    .submit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+    .btn-turquoise {
+      background: var(--turquoise); color: #06090e; font-weight: 900; text-transform: uppercase;
+      letter-spacing: 1px; padding: 16px 20px; border: none; border-radius: 4px; cursor: pointer;
+      box-shadow: 0 0 20px var(--turquoise-glow); font-family: inherit; font-size: 14px; transition: 0.25s;
+    }
+    .btn-turquoise:hover { background: var(--turquoise-dark); transform: translateY(-2px); }
+
+    @media (max-width: 650px) { .submit-grid { grid-template-columns: 1fr; } .form-card { padding: 24px; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo-wrap">
+      <img src="images/logo.png" alt="KAZ MC GROUP" onerror="this.style.display='none'; document.getElementById('logo-fb').style.display='block';">
+      <div id="logo-fb" class="logo-fallback" style="display:none;">KAZ MC</div>
+      <div class="brand-name">KAZ <span>MC</span> GROUP</div>
+    </a>
+    <nav>
+      <a href="index.html" data-ru="Главная" data-kz="Басты бет">Главная</a>
+      <a href="catalog.html" data-ru="Продукция и ГОСТ" data-kz="Өнімдер мен МЕМСТ">Продукция и ГОСТ</a>
+      <a href="order.html" class="active" data-ru="Заказать расчет" data-kz="Есептеуді тапсырыс беру">Заказать расчет</a>
+    </nav>
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('ru')" id="btn-ru">RU</button>
+      <button class="lang-btn" onclick="setLang('kz')" id="btn-kz">KZ</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="form-card">
+      <h1 data-ru="Узнать стоимость / <span>Заказать расчет</span>" data-kz="Бағасын білу / <span>Есептеуге тапсырыс беру</span>">Узнать стоимость / <span>Заказать расчет</span></h1>
+      <p data-ru="Заполните данные о вашем проекте и выберите удобный мессенджер (WhatsApp или Telegram +7 771 128 80 40) для мгновенной отправки заявки и чертежа инженерам KAZ MC GROUP." data-kz="Жобаңыз туралы мәліметтерді толтырып, KAZ MC GROUP инженерлеріне өтінім мен сызбаны жіберу үшін ыңғайлы мессенджерді (WhatsApp немесе Telegram +7 771 128 80 40) таңдаңыз.">Заполните данные о вашем проекте и выберите удобный мессенджер (WhatsApp или Telegram +7 771 128 80 40) для мгновенной отправки заявки и чертежа инженерам KAZ MC GROUP.</p>
+
+      <div class="form-group">
+        <label data-ru="Ваше Имя / Компания *" data-kz="Сіздің Атыңыз / Компания *">Ваше Имя / Компания *</label>
+        <input type="text" id="clientName" placeholder="Например: ТОО СтройИнвест / Аскар" required>
+      </div>
+
+      <div class="form-group">
+        <label data-ru="Номер телефона *" data-kz="Телефон нөмірі *">Номер телефона *</label>
+        <input type="tel" id="clientPhone" placeholder="+7 (7__) ___-__-__" required>
+      </div>
+
+      <div class="form-group">
+        <label data-ru="Тип металлоконструкции" data-kz="Металл конструкциясының түрі">Тип металлоконструкции</label>
+        <select id="projectType">
+          <option value="Ангары и склады">Ангары и склады</option>
+          <option value="Каркасы зданий">Каркасы зданий</option>
+          <option value="Навесы">Навесы</option>
+          <option value="Лестницы и ограждения">Лестницы и ограждения</option>
+          <option value="Ворота">Ворота</option>
+          <option value="Нестандартные изделия на заказ">Нестандартные изделия на заказ</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label data-ru="Чертеж / Проект (КМ, КМД, PDF, DWG, Фото)" data-kz="Сызба / Жоба (КМ, КМД, PDF, DWG, Фото)">Чертеж / Проект (КМ, КМД, PDF, DWG, Фото)</label>
+        <label class="file-box">
+          <input type="file" id="blueprintFile" onchange="updateFileName()">
+          <div id="fileLabel" data-ru="📎 Нажмите, чтобы выбрать файл чертежа" data-kz="📎 Сызба файлын таңдау үшін басыңыз">📎 Нажмите, чтобы выбрать файл чертежа</div>
+          <div class="file-hint" data-ru="Имя файла добавится в заявку — прикрепите сам файл в открывшемся чате WhatsApp / Telegram" data-kz="Файл атауы өтінімге қосылады — файлдың өзін ашылған WhatsApp / Telegram чатында тіркеңіз">Имя файла добавится в заявку — прикрепите сам файл в открывшемся чате WhatsApp / Telegram</div>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label data-ru="Проектная информация (размеры, тоннаж, город монтажа)" data-kz="Жобалық ақпарат (өлшемдері, тоннажы, монтаждау қаласы)">Проектная информация (размеры, тоннаж, город монтажа)</label>
+        <textarea id="projectInfo" placeholder="Опишите габариты (ДхШхВ), примерный тоннаж, наличие проекта КМ/КМД и город доставки (Астана или другой регион РК)..."></textarea>
+      </div>
+
+      <div class="submit-grid">
+        <button type="button" class="btn-turquoise" onclick="sendOrder('whatsapp')">
+          💬 <span data-ru="Отправить в WhatsApp" data-kz="WhatsApp-қа жіберу">Отправить в WhatsApp</span>
+        </button>
+        <button type="button" class="btn-turquoise" onclick="sendOrder('telegram')">
+          ✈️ <span data-ru="Отправить в Telegram" data-kz="Telegram-ға жіберу">Отправить в Telegram</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('type')) {
+      document.getElementById('projectType').value = params.get('type');
+    }
+
+    function updateFileName() {
+      const fileInput = document.getElementById('blueprintFile');
+      const label = document.getElementById('fileLabel');
+      if (fileInput.files.length > 0) {
+        label.innerHTML = '✅ Выбран чертеж: <strong>' + fileInput.files[0].name + '</strong>';
+      }
+    }
+
+    function sendOrder(channel) {
+      const name = document.getElementById('clientName').value.trim();
+      const phone = document.getElementById('clientPhone').value.trim();
+      const type = document.getElementById('projectType').value;
+      const info = document.getElementById('projectInfo').value.trim() || 'Не указано';
+      const fileInput = document.getElementById('blueprintFile');
+      const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'Прикреплю в чате';
+
+      if (!name || !phone) {
+        alert('Пожалуйста, укажите Ваше имя и телефон!');
+        return;
+      }
+
+      const message =
+        `🏗 *ЗАЯВКА НА РАСЧЕТ — KAZ MC GROUP*\n` +
+        `👤 *Имя / Компания:* ${name}\n` +
+        `📞 *Телефон:* ${phone}\n` +
+        `🔩 *Конструкция:* ${type}\n` +
+        `📐 *Чертеж:* ${fileName}\n` +
+        `📋 *Проектная информация:* ${info}`;
+
+      const encoded = encodeURIComponent(message);
+
+      if (channel === 'whatsapp') {
+        window.open(`https://wa.me/77711288040?text=${encoded}`, '_blank');
+      } else {
+        navigator.clipboard?.writeText(message);
+        window.open(`https://t.me/+77711288040`, '_blank');
+        alert('Текст заявки скопирован! Вставьте его в открывшемся чате Telegram (+7 771 128 80 40) и прикрепите файл чертежа.');
+      }
+    }
+
+    let currentLang = localStorage.getItem('kazmc_lang') || 'ru';
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('kazmc_lang', lang);
+      document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+      document.getElementById('btn-kz').classList.toggle('active', lang === 'kz');
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        el.innerHTML = el.getAttribute('data-' + lang);
+      });
+    }
+    setLang(currentLang);
+  </script>
+</body>
+</html>

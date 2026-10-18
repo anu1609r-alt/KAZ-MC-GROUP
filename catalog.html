@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Каталог и ГОСТ — KAZ MC GROUP</title>
+  <title>Продукция и ГОСТ — Цех металлоконструкций KAZ MC GROUP</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -22,7 +22,7 @@
 
     header {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(9, 13, 20, 0.95); backdrop-filter: blur(10px);
+      background: rgba(9, 13, 20, 0.96); backdrop-filter: blur(10px);
       border-bottom: 2px solid var(--border); padding: 12px 16px;
       display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
     }
@@ -32,36 +32,54 @@
     .brand-name { font-size: 16px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
     .brand-name span { color: var(--turquoise); }
 
-    nav { display: flex; gap: 15px; align-items: center; width: 100%; justify-content: center; padding-top: 5px; border-top: 1px solid var(--border); }
+    nav { display: flex; gap: 14px; align-items: center; width: 100%; justify-content: space-around; padding-top: 8px; border-top: 1px solid var(--border); }
     nav a { font-weight: 700; font-size: 12px; text-transform: uppercase; color: var(--text-muted); }
     nav a.active { color: var(--turquoise); }
 
     .lang-switch { display: flex; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-    .lang-btn { background: var(--bg-card); color: var(--text-muted); border: none; padding: 5px 8px; font-weight: 800; cursor: pointer; font-size: 11px; font-family: inherit; }
+    .lang-btn { background: var(--bg-card); color: var(--text-muted); border: none; padding: 6px 10px; font-weight: 800; cursor: pointer; font-size: 11px; font-family: inherit; }
     .lang-btn.active { background: var(--turquoise); color: #000; }
 
     .btn-turquoise {
       background: var(--turquoise); color: #06090e; font-weight: 800; text-transform: uppercase;
-      padding: 12px 18px; border: none; border-radius: 6px; cursor: pointer;
+      padding: 13px 18px; border: none; border-radius: 6px; cursor: pointer;
       box-shadow: 0 0 15px var(--turquoise-glow); display: inline-flex; align-items: center; justify-content: center;
-      font-size: 13px; width: 100%; text-align: center;
+      font-size: 12px; width: 100%; text-align: center; transition: 0.25s;
     }
+    .btn-turquoise:hover { background: var(--turquoise-dark); }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 30px 16px; }
-    .page-title { font-size: 24px; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 28px 16px; }
+    .page-title { font-size: 24px; font-weight: 900; text-transform: uppercase; margin-bottom: 8px; }
     .page-title span { color: var(--turquoise); }
-    .page-sub { color: var(--text-muted); font-size: 13px; margin-bottom: 30px; }
+    .page-sub { color: var(--text-muted); font-size: 13px; margin-bottom: 24px; }
 
-    .catalog-list { display: grid; gap: 16px; }
-    .cat-item {
+    /* СЕТКА КАТАЛОГА (10 ПОЗИЦИЙ) */
+    .catalog-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .cat-card {
       background: var(--bg-card); border: 1px solid var(--border);
       border-left: 4px solid var(--turquoise); padding: 20px; border-radius: 6px;
-      display: flex; flex-direction: column; gap: 16px;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 14px;
     }
-    .cat-item h3 { font-size: 18px; text-transform: uppercase; color: var(--turquoise); margin-bottom: 8px; }
-    .cat-item p { color: var(--text-muted); font-size: 13px; margin-bottom: 12px; }
+    .cat-card h3 { font-size: 17px; text-transform: uppercase; color: var(--turquoise); margin-bottom: 6px; }
+    .cat-card p { color: var(--text-muted); font-size: 13px; margin-bottom: 10px; }
+    .spec-mini {
+      background: #0b1018; border: 1px solid var(--border); padding: 10px; border-radius: 4px;
+      font-size: 12px; color: #cbd5e1; margin-bottom: 10px;
+    }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag { background: #1a2433; border: 1px solid var(--border); padding: 4px 8px; font-size: 11px; font-weight: 700; border-radius: 4px; }
+    .tag { background: #1a2433; border: 1px solid var(--border); padding: 4px 8px; font-size: 11px; font-weight: 700; border-radius: 4px; color: var(--turquoise); }
+
+    /* БЛОК ГОСТ И СНИП */
+    .gost-box {
+      margin-top: 40px; background: var(--bg-card); border: 2px solid var(--border);
+      border-top: 4px solid var(--turquoise); padding: 22px 16px; border-radius: 8px;
+    }
+    .gost-box h2 { font-size: 20px; text-transform: uppercase; margin-bottom: 12px; color: var(--turquoise); }
+    .gost-list { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .gost-item {
+      background: #090d14; border: 1px solid var(--border); padding: 12px; border-radius: 4px; font-size: 12px;
+    }
+    .gost-item strong { color: var(--turquoise); display: block; margin-bottom: 3px; font-size: 13px; }
 
     footer { background: #06090e; border-top: 2px solid var(--border); padding: 25px 16px; text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 40px; }
 
@@ -69,10 +87,10 @@
       header { padding: 15px 5%; }
       nav { width: auto; border-top: none; padding-top: 0; gap: 25px; }
       nav a { font-size: 14px; }
-      .container { padding: 60px 5%; }
+      .container { padding: 50px 5%; }
       .page-title { font-size: 36px; }
-      .cat-item { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 28px; gap: 24px; }
-      .cat-item .btn-turquoise { width: auto; }
+      .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+      .gost-list { grid-template-columns: repeat(2, 1fr); gap: 14px; }
     }
   </style>
 </head>
@@ -96,52 +114,147 @@
   </header>
 
   <div class="container">
-    <h1 class="page-title" data-ru="Каталог <span>металлоконструкций</span>" data-kz="Металл конструкциялар <span>каталогы</span>">Каталог <span>металлоконструкций</span></h1>
-    <p class="page-sub" data-ru="Работы выполняются по проектам (КМ, КМД), ГОСТ и СНиП. Гарантия от 1 года." data-kz="Жұмыстар жобалар (КМ, КМД), МЕМСТ және ҚНжЕ бойынша орындалады. Кепілдік 1 жылдан бастап.">Работы выполняются по проектам (КМ, КМД), ГОСТ и СНиП. Гарантия от 1 года.</p>
+    <h1 class="page-title" data-ru="Каталог продукции цеха <span>и стандарты ГОСТ</span>" data-kz="Цех өнімдерінің каталогы <span>және МЕМСТ</span>">Каталог продукции цеха <span>и стандарты ГОСТ</span></h1>
+    <p class="page-sub" data-ru="Цех металлоконструкций KAZ MC GROUP изготавливает несущие и ограждающие конструкции в Астане и по всему РК. Все работы ведутся строго согласно проектов (КМ, КМД) или по ГОСТу и СНиПу с гарантией минимум 1 год." data-kz="KAZ MC GROUP металл конструкциялар цехы Астанада және бүкіл ҚР бойынша тірек және қоршау конструкцияларын дайындайды. Барлық жұмыстар жобаларға, МЕМСТ пен ҚНжЕ-ге сәйкес кемінде 1 жыл кепілдікпен жүргізіледі.">Цех металлоконструкций KAZ MC GROUP изготавливает несущие и ограждающие конструкции в Астане и по всему РК. Все работы ведутся строго согласно проектов (КМ, КМД) или по ГОСТу и СНиПу с гарантией минимум 1 год.</p>
 
-    <div class="catalog-list">
-      <div class="cat-item">
+    <div class="catalog-grid">
+      <!-- 1 -->
+      <div class="cat-card">
         <div>
-          <h3 data-ru="1. Быстровозводимые ангары и склады" data-kz="1. Тез салынатын ангарлар мен қоймалар">1. Быстровозводимые ангары и склады</h3>
-          <p data-ru="Проектирование и монтаж теплых (сэндвич-панели) и холодных ангаров, складов, зернохранилищ в Астане и РК." data-kz="Астана және ҚР жылы және суық ангарларды, қоймаларды жобалау және монтаждау.">Проектирование и монтаж теплых (сэндвич-панели) и холодных ангаров, складов, зернохранилищ в Астане и РК.</p>
-          <div class="tags">
-            <span class="tag">ГОСТ 23118</span>
-            <span class="tag" data-ru="Гарантия 1+ год" data-kz="Кепілдік 1+ жыл">Гарантия 1+ год</span>
-            <span class="tag" data-ru="Монтаж под ключ" data-kz="Кілтпен монтаждау">Монтаж под ключ</span>
-          </div>
+          <h3 data-ru="01. Прямостенные и арочные ангары" data-kz="01. Тік қабырғалы және аркалы ангарлар">01. Прямостенные и арочные ангары</h3>
+          <p data-ru="Быстровозводимые теплые (сэндвич-панели) и холодные (профлист) ангары для техники, цехов, авиации и сельского хозяйства." data-kz="Техникаға, цехтарға және ауыл шаруашылығына арналған жылы және суық ангарлар.">Быстровозводимые теплые (сэндвич-панели) и холодные (профлист) ангары для техники, цехов, авиации и сельского хозяйства.</p>
+          <div class="spec-mini">Пролет: от 12 до 36+ м • Снеговая и ветровая нагрузка по СНиП РК</div>
+          <div class="tags"><span class="tag">ГОСТ 23118</span><span class="tag">Сталь С245 / С345</span></div>
         </div>
-        <a href="order.html?type=Ангары и склады" class="btn-turquoise" data-ru="Заказать расчет" data-kz="Есептеу">Заказать расчет</a>
+        <a href="order.html?type=Ангары прямостенные и арочные" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
-      <div class="cat-item">
+      <!-- 2 -->
+      <div class="cat-card">
         <div>
-          <h3 data-ru="2. Несущие каркасы зданий" data-kz="2. Ғимараттардың тірек қаңқалары">2. Несущие каркасы зданий</h3>
-          <p data-ru="Изготовление колонн, ферм перекрытия, подкрановых балок, связей жесткости." data-kz="Бағандарды, фермаларды, арқалықтарды дайындау.">Изготовление колонн, ферм перекрытия, подкрановых балок, связей жесткости.</p>
-          <div class="tags">
-            <span class="tag">СНиП РК</span>
-            <span class="tag">Сталь С245/С345</span>
-            <span class="tag" data-ru="Контроль швов" data-kz="Тігістерді бақылау">Контроль швов</span>
-          </div>
+          <h3 data-ru="02. Склады, логистические комплексы и зернохранилища" data-kz="02. Қоймалар мен астық қоймалары">02. Склады, логистические комплексы и зернохранилища</h3>
+          <p data-ru="Промышленные склады, овощехранилища, зернохранилища и терминалы с высокой полезной площадью без лишних внутренних опор." data-kz="Өнеркәсіптік қоймалар, көкөніс және астық қоймалары.">Промышленные склады, овощехранилища, зернохранилища и терминалы с высокой полезной площадью без лишних внутренних опор.</p>
+          <div class="spec-mini">Усиленные узлы • Грунтовка ГФ-021 / Эмаль • Гарантия от 1 года</div>
+          <div class="tags"><span class="tag">СП РК / СНиП</span><span class="tag">КМ / КМД</span></div>
         </div>
-        <a href="order.html?type=Каркасы зданий" class="btn-turquoise" data-ru="Заказать расчет" data-kz="Есептеу">Заказать расчет</a>
+        <a href="order.html?type=Склады и зернохранилища" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
-      <div class="cat-item">
+      <!-- 3 -->
+      <div class="cat-card">
         <div>
-          <h3 data-ru="3. Навесы, лестницы и ворота" data-kz="3. Бастырмалар, баспалдақтар мен қақпалар">3. Навесы, лестницы и ворота</h3>
-          <p data-ru="Навесы, маршевые и пожарные лестницы, откатные/распашные ворота и нестандартные МК." data-kz="Бастырмалар, марштық және өрт баспалдақтары, қақпалар және стандартты емес МК.">Навесы, маршевые и пожарные лестницы, откатные/распашные ворота и нестандартные МК.</p>
-          <div class="tags">
-            <span class="tag" data-ru="По вашим чертежам" data-kz="Сіздің сызбаларыңыз бойынша">По вашим чертежам</span>
-            <span class="tag" data-ru="Антикоррозийная защита" data-kz="Коррозияға қарсы қорғаныс">Антикоррозийная защита</span>
-          </div>
+          <h3 data-ru="03. Металлические каркасы зданий (Колонны, Балки)" data-kz="03. Ғимараттардың металл қаңқалары">03. Металлические каркасы зданий (Колонны, Балки)</h3>
+          <p data-ru="Несущие колонны постоянного и переменного сечения, двутавровые балки перекрытий, подкрановые балки и ригели." data-kz="Тірек бағандар, қос таврлы жабын арқалықтары, кран асты арқалықтары.">Несущие колонны постоянного и переменного сечения, двутавровые балки перекрытий, подкрановые балки и ригели.</p>
+          <div class="spec-mini">Двутавр, швеллер, профильная и круглая труба • Сварка по ГОСТ 5264</div>
+          <div class="tags"><span class="tag">ГОСТ 27772</span><span class="tag">Сталь 09Г2С / С255</span></div>
         </div>
-        <a href="order.html?type=Навесы / Лестницы / Ворота" class="btn-turquoise" data-ru="Заказать расчет" data-kz="Есептеу">Заказать расчет</a>
+        <a href="order.html?type=Каркасы зданий и колонны" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+      </div>
+
+      <!-- 4 -->
+      <div class="cat-card">
+        <div>
+          <h3 data-ru="04. Стропильные и подстропильные фермы, связи" data-kz="04. Стропилалық фермалар мен байланыстар">04. Стропильные и подстропильные фермы, связи</h3>
+          <p data-ru="Изготовление плоских и пространственных металлических ферм (односкатных, двускатных, арочных), прогонов и связей жесткости." data-kz="Жазық және кеңістіктік металл фермаларды, прогондар мен байланыстарды дайындау.">Изготовление плоских и пространственных металлических ферм (односкатных, двускатных, арочных), прогонов и связей жесткости.</p>
+          <div class="spec-mini">Точная геометрия на стапелях цеха • Контроль сварных соединений</div>
+          <div class="tags"><span class="tag">ГОСТ 23118</span><span class="tag">ГОСТ 30245</span></div>
+        </div>
+        <a href="order.html?type=Металлические фермы и связи" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+      </div>
+
+      <!-- 5 -->
+      <div class="cat-card">
+        <div>
+          <h3 data-ru="05. Автомойки, СТО, павильоны и ТРЦ" data-kz="05. Автожуу, ТҚС және павильондар">05. Автомойки, СТО, павильоны и ТРЦ</h3>
+          <p data-ru="Полные комплекты металлокаркасов для строительства СТО, автомоек, магазинов, торговых боксов и коммерческих зданий." data-kz="ТҚС, автожуу, дүкендер мен коммерциялық ғимараттарға арналған металл қаңқалар.">Полные комплекты металлокаркасов для строительства СТО, автомоек, магазинов, торговых боксов и коммерческих зданий.</p>
+          <div class="spec-mini">Быстрая сборка на болтовых и сварных соединениях</div>
+          <div class="tags"><span class="tag">Быстрый монтаж</span><span class="tag">В Астане и по всему РК</span></div>
+        </div>
+        <a href="order.html?type=Каркас СТО / Автомойки / Павильона" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+      </div>
+
+      <!-- 6 -->
+      <div class="cat-card">
+        <div>
+          <h3 data-ru="06. Промышленные и частные навесы, козырьки" data-kz="06. Өнеркәсіптік және жеке бастырмалар">06. Промышленные и частные навесы, козырьки</h3>
+          <p data-ru="Навесы для большегрузной техники, паркингов, складских рамп, АЗС, входных групп и частных домов." data-kz="Жүк техникасына, автотұрақтарға, қоймаларға және жеке үйлерге арналған бастырмалар.">Навесы для большегрузной техники, паркингов, складских рамп, АЗС, входных групп и частных домов.</p>
+          <div class="spec-mini">Покрытие: профнастил, поликарбонат, металлочерепица</div>
+          <div class="tags"><span class="tag">СНиП Нагрузки</span><span class="tag">Антикоррозия</span></div>
+        </div>
+        <a href="order.html?type=Навесы и козырьки" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+      </div>
+
+      <!-- 7 -->
+      <div class="cat-card">
+        <div>
+          <h3 data-ru="07. Лестницы, площадки обслуживания и стремянки" data-kz="07. Баспалдақтар мен қызмет көрсету алаңдары">07. Лестницы, площадки обслуживания и стремянки</h3>
+          <p data-ru="Внутренние и наружные маршевые лестницы, пожарные и эвакуационные лестницы, переходные площадки с настилом ПВЛ / рифленым листом." data-kz="Ішкі және сыртқы марштық баспалдақтар, өрт сөндіру баспалдақтары мен алаңдар.">Внутренние и наружные маршевые лестницы, пожарные и эвакуационные лестницы, переходные площадки с настилом ПВЛ / рифленым листом.</p>
+          <div class="spec-mini">Соответствие нормам пожарной безопасности РК</div>
+          <div class="tags"><span class="tag">ГОСТ Р 53254</span><span class="tag">ГОСТ 23120</span></div>
+        </div>
+        <a href="order.html?type=Лестницы и площадки" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+      </div>
+
+      <!-- 8 -->
+      <div class="cat-card">
+        <div>
+          <h3 data-ru="08. Промышленные и въездные ворота" data-kz="08. Өнеркәсіптік және кіру қақпалары">08. Промышленные и въездные ворота</h3>
+          <p data-ru="Усиленные откатные (консольные), распашные и утепленные ворота для производственных цехов, ангаров и баз." data-kz="Өндірістік цехтарға, ангарларға және базаларға арналған жылжымалы және ашылатын қақпалар.">Усиленные откатные (консольные), распашные и утепленные ворота для производственных цехов, ангаров и баз.</p>
+          <div class="spec-mini">Жесткая силовая рама • Подготовка под автоматику</div>
+          <div class="tags"><span class="tag">ГОСТ 31174</span><span class="tag">Надежная фурнитура</span></div>
+        </div>
+        <a href="order.html?type=Ворота промышленные" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+      </div>
+
+      <!-- 9 -->
+      <div class="cat-card">
+        <div>
+          <h3 data-ru="09. Ограждающие конструкции, перила и заборы" data-kz="09. Қоршау конструкциялары мен перилалар">09. Ограждающие конструкции, перила и заборы</h3>
+          <p data-ru="Металлические секционные заборы, промышленные ограждения территорий, балконные и лестничные ограждения, колесоотбойники." data-kz="Металл секциялық қоршаулар, аумақтарды қоршау, баспалдақ қоршаулары.">Металлические секционные заборы, промышленные ограждения территорий, балконные и лестничные ограждения, колесоотбойники.</p>
+          <div class="spec-mini">Изготовление сериями в цеху • Быстрый монтаж</div>
+          <div class="tags"><span class="tag">ГОСТ 25772</span><span class="tag">Полимерная / Эмаль покраска</span></div>
+        </div>
+        <a href="order.html?type=Ограждающие конструкции и заборы" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+      </div>
+
+      <!-- 10 -->
+      <div class="cat-card">
+        <div>
+          <h3 data-ru="10. Закладные детали, анкерные блоки и нестандартные МК" data-kz="10. Бекіту бөлшектері және стандартты емес МК">10. Закладные детали, анкерные блоки и нестандартные МК</h3>
+          <p data-ru="Закладные детали (МН, ЗД), фундаментные анкерные блоки, эстакады под трубопроводы, бункеры, силосы, рамы под оборудование на заказ." data-kz="Бекіту бөлшектері, іргетас анкерлік блоктары, эстакадалар, бункерлер мен тапсырыс бойынша стандартты емес бұйымдар.">Закладные детали (МН, ЗД), фундаментные анкерные блоки, эстакады под трубопроводы, бункеры, силосы, рамы под оборудование на заказ.</p>
+          <div class="spec-mini">Плазменная/газовая резка листа • Изготовление строго по чертежам</div>
+          <div class="tags"><span class="tag">Серия 1.400-15</span><span class="tag">ГОСТ 10922</span></div>
+        </div>
+        <a href="order.html?type=Закладные детали и нестандартные изделия" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+      </div>
+    </div>
+
+    <!-- СВОДКА ГОСТ И СНИП -->
+    <div class="gost-box">
+      <h2 data-ru="Применяемые стандарты ГОСТ и СНиП в цеху KAZ MC GROUP" data-kz="KAZ MC GROUP цехында қолданылатын МЕМСТ және ҚНжЕ стандарттары">Применяемые стандарты ГОСТ и СНиП в цеху KAZ MC GROUP</h2>
+      <div class="gost-list">
+        <div class="gost-item">
+          <strong>ГОСТ 23118-2019</strong>
+          Конструкции стальные строительные. Общие технические условия.
+        </div>
+        <div class="gost-item">
+          <strong>СНиП РК / СП РК EN 1993</strong>
+          Проектирование стальных конструкций и соблюдение снеговых/ветровых районов РК.
+        </div>
+        <div class="gost-item">
+          <strong>ГОСТ 5264-80 / ГОСТ 14771-76</strong>
+          Ручная дуговая и полуавтоматическая сварка в защитном газе. Контроль качества швов.
+        </div>
+        <div class="gost-item">
+          <strong>ГОСТ 9.402 / СНиП 2.03.11</strong>
+          Защита строительных металлоконструкций от коррозии (зачистка, обезжиривание, грунт, эмаль).
+        </div>
       </div>
     </div>
   </div>
 
   <footer>
-    © 2026 KAZ MC GROUP • г. Астана • +7 771 128 80 40
+    © 2026 KAZ MC GROUP • Цех металлоконструкций в Астане и по всему РК • +7 771 128 80 40
   </footer>
 
   <script>

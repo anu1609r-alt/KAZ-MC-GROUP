@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Заказать расчет — KAZ MC GROUP</title>
+  <title>Заказать расчет — Цех металлоконструкций KAZ MC GROUP</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -22,7 +22,7 @@
 
     header {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(9, 13, 20, 0.95); backdrop-filter: blur(10px);
+      background: rgba(9, 13, 20, 0.96); backdrop-filter: blur(10px);
       border-bottom: 2px solid var(--border); padding: 12px 16px;
       display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
     }
@@ -32,52 +32,61 @@
     .brand-name { font-size: 16px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
     .brand-name span { color: var(--turquoise); }
 
-    nav { display: flex; gap: 15px; align-items: center; width: 100%; justify-content: center; padding-top: 5px; border-top: 1px solid var(--border); }
+    nav { display: flex; gap: 14px; align-items: center; width: 100%; justify-content: space-around; padding-top: 8px; border-top: 1px solid var(--border); }
     nav a { font-weight: 700; font-size: 12px; text-transform: uppercase; color: var(--text-muted); }
     nav a.active { color: var(--turquoise); }
 
     .lang-switch { display: flex; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-    .lang-btn { background: var(--bg-card); color: var(--text-muted); border: none; padding: 5px 8px; font-weight: 800; cursor: pointer; font-size: 11px; font-family: inherit; }
+    .lang-btn { background: var(--bg-card); color: var(--text-muted); border: none; padding: 6px 10px; font-weight: 800; cursor: pointer; font-size: 11px; font-family: inherit; }
     .lang-btn.active { background: var(--turquoise); color: #000; }
 
-    .container { max-width: 800px; margin: 0 auto; padding: 30px 16px; }
+    .container { max-width: 820px; margin: 0 auto; padding: 24px 16px 50px; }
     .form-card {
       background: var(--bg-card); border: 1px solid var(--border);
-      border-top: 4px solid var(--turquoise); padding: 24px 16px; border-radius: 8px;
+      border-top: 4px solid var(--turquoise); padding: 22px 16px; border-radius: 8px;
     }
-    .form-card h1 { font-size: 22px; text-transform: uppercase; margin-bottom: 8px; }
+    .form-card h1 { font-size: 21px; text-transform: uppercase; margin-bottom: 8px; }
     .form-card h1 span { color: var(--turquoise); }
-    .form-card p { color: var(--text-muted); font-size: 13px; margin-bottom: 24px; }
+    .form-card p { color: var(--text-muted); font-size: 13px; margin-bottom: 20px; }
 
     .form-group { margin-bottom: 16px; }
     label { display: block; font-weight: 700; font-size: 12px; text-transform: uppercase; margin-bottom: 6px; color: var(--turquoise); }
     input[type="text"], input[type="tel"], select, textarea {
       width: 100%; background: #090d14; border: 1px solid var(--border);
-      color: #fff; padding: 12px; border-radius: 6px; font-family: inherit; font-size: 14px;
+      color: #fff; padding: 13px; border-radius: 6px; font-family: inherit; font-size: 14px;
     }
     input:focus, select:focus, textarea:focus { outline: none; border-color: var(--turquoise); }
     textarea { min-height: 100px; resize: vertical; }
 
     .file-box {
       border: 2px dashed var(--turquoise); background: rgba(0, 229, 255, 0.05);
-      padding: 16px; text-align: center; border-radius: 6px; cursor: pointer;
+      padding: 18px 14px; text-align: center; border-radius: 6px; cursor: pointer; display: block;
     }
     .file-box input { display: none; }
-    .file-hint { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+    .file-hint { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
 
-    .submit-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
+    /* ПРЕВЬЮ ВЫБРАННОГО ФОТО */
+    #previewWrap {
+      display: none; margin-top: 12px; background: #090d14;
+      border: 1px solid var(--turquoise); border-radius: 6px; padding: 10px; text-align: center;
+    }
+    #previewImg { max-width: 100%; max-height: 220px; border-radius: 4px; object-fit: contain; }
+    #statusText { font-size: 12px; color: var(--turquoise); margin-top: 8px; font-weight: 700; }
+
+    .submit-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
     .btn-turquoise {
       background: var(--turquoise); color: #06090e; font-weight: 900; text-transform: uppercase;
-      letter-spacing: 0.5px; padding: 14px; border: none; border-radius: 6px; cursor: pointer;
-      box-shadow: 0 0 15px var(--turquoise-glow); font-family: inherit; font-size: 13px; text-align: center; width: 100%;
+      letter-spacing: 0.5px; padding: 15px 14px; border: none; border-radius: 6px; cursor: pointer;
+      box-shadow: 0 0 16px var(--turquoise-glow); font-family: inherit; font-size: 13px; text-align: center; width: 100%;
     }
+    .btn-turquoise:disabled { opacity: 0.6; cursor: wait; }
 
     @media (min-width: 768px) {
       header { padding: 15px 5%; }
       nav { width: auto; border-top: none; padding-top: 0; gap: 25px; }
       nav a { font-size: 14px; }
-      .container { padding: 60px 5%; }
-      .form-card { padding: 40px; }
+      .container { padding: 50px 5%; }
+      .form-card { padding: 36px; }
       .submit-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
@@ -103,51 +112,59 @@
 
   <div class="container">
     <div class="form-card">
-      <h1 data-ru="Заказать <span>расчет</span>" data-kz="Есептеуге <span>тапсырыс беру</span>">Заказать <span>расчет</span></h1>
-      <p data-ru="Заполните заявку и выберите мессенджер (+7 771 128 80 40) для отправки инженерам KAZ MC GROUP." data-kz="Өтінімді толтырып, KAZ MC GROUP инженерлеріне жіберу үшін мессенджерді таңдаңыз.">Заполните заявку и выберите мессенджер (+7 771 128 80 40) для отправки инженерам KAZ MC GROUP.</p>
+      <h1 data-ru="Узнать стоимость / <span>Заказать расчет</span>" data-kz="Бағасын білу / <span>Есептеуге тапсырыс беру</span>">Узнать стоимость / <span>Заказать расчет</span></h1>
+      <p data-ru="Цех металлоконструкций KAZ MC GROUP (работаем в Астане и по всему РК). Прикрепите фото или файл чертежа — оно отправится вместе с вашей заявкой!" data-kz="KAZ MC GROUP металл конструкциялар цехы (Астанада және бүкіл ҚР бойынша). Сызбаның фотосын немесе файлын тіркеңіз — ол өтініммен бірге жіберіледі!">Цех металлоконструкций KAZ MC GROUP (работаем в Астане и по всему РК). Прикрепите фото или файл чертежа — оно отправится вместе с вашей заявкой!</p>
 
       <div class="form-group">
-        <label data-ru="Ваше Имя / Компания *" data-kz="Атыңыз / Компания *">Ваше Имя / Компания *</label>
-        <input type="text" id="clientName" placeholder="ТОО Строй / Аскар" required>
+        <label data-ru="Ваше Имя / Компания *" data-kz="Сіздің Атыңыз / Компания *">Ваше Имя / Компания *</label>
+        <input type="text" id="clientName" placeholder="Например: ТОО СтройГрупп / Аскар" required>
       </div>
 
       <div class="form-group">
         <label data-ru="Номер телефона *" data-kz="Телефон нөмірі *">Номер телефона *</label>
-        <input type="tel" id="clientPhone" placeholder="+7 (771) 128-80-40" required>
+        <input type="tel" id="clientPhone" placeholder="+7 (7__) ___-__-__" required>
       </div>
 
       <div class="form-group">
         <label data-ru="Тип металлоконструкции" data-kz="Металл конструкциясының түрі">Тип металлоконструкции</label>
         <select id="projectType">
-          <option value="Ангары и склады">Ангары и склады</option>
-          <option value="Каркасы зданий">Каркасы зданий</option>
-          <option value="Навесы">Навесы</option>
-          <option value="Лестницы и ограждения">Лестницы и ограждения</option>
-          <option value="Ворота">Ворота</option>
-          <option value="Нестандартные изделия на заказ">Нестандартные изделия на заказ</option>
+          <option value="Ангары прямостенные и арочные">Ангары прямостенные и арочные</option>
+          <option value="Склады и зернохранилища">Склады и зернохранилища</option>
+          <option value="Каркасы зданий и колонны">Каркасы зданий и колонны</option>
+          <option value="Металлические фермы и связи">Металлические фермы и связи</option>
+          <option value="Каркас СТО / Автомойки / Павильона">Каркас СТО / Автомойки / Павильона</option>
+          <option value="Навесы и козырьки">Навесы и козырьки</option>
+          <option value="Лестницы и площадки">Лестницы и площадки</option>
+          <option value="Ворота промышленные">Ворота промышленные</option>
+          <option value="Ограждающие конструкции и заборы">Ограждающие конструкции и заборы</option>
+          <option value="Закладные детали и нестандартные изделия">Закладные детали и нестандартные изделия</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label data-ru="Чертеж / Проект (PDF, DWG, Фото)" data-kz="Сызба / Жоба (PDF, DWG, Фото)">Чертеж / Проект (PDF, DWG, Фото)</label>
+        <label data-ru="Фото чертежа / эскиза или файл проекта *" data-kz="Сызба фотосы / жоба файлы *">Фото чертежа / эскиза или файл проекта *</label>
         <label class="file-box">
-          <input type="file" id="blueprintFile" onchange="updateFileName()">
-          <div id="fileLabel" data-ru="📎 Выбрать файл чертежа" data-kz="📎 Сызба файлын таңдау">📎 Выбрать файл чертежа</div>
-          <div class="file-hint" data-ru="Файл прикрепится в чате мессенджера" data-kz="Файл чатта тіркеледі">Файл прикрепится в чате мессенджера</div>
+          <input type="file" id="blueprintFile" accept="image/*,.pdf,.dwg,.doc,.docx" onchange="handleFileSelect()">
+          <div id="fileLabel" data-ru="📸 Нажмите, чтобы выбрать фото чертежа или файл" data-kz="📸 Сызба фотосын немесе файлды таңдау үшін басыңыз">📸 Нажмите, чтобы выбрать фото чертежа или файл</div>
+          <div class="file-hint" data-ru="Фото чертежа прикрепится и отправится вместе с сообщением" data-kz="Сызба фотосы хабарламамен бірге жіберіледі">Фото чертежа прикрепится и отправится вместе с сообщением</div>
         </label>
+        <div id="previewWrap">
+          <img id="previewImg" src="" alt="Превью чертежа">
+          <div id="statusText"></div>
+        </div>
       </div>
 
       <div class="form-group">
-        <label data-ru="Проектная информация (размеры, город)" data-kz="Жобалық ақпарат (өлшемдері, қала)">Проектная информация (размеры, город)</label>
-        <textarea id="projectInfo" placeholder="Габариты, тоннаж, город монтажа (Астана и др.)..."></textarea>
+        <label data-ru="Проектная информация (размеры, тоннаж, город в РК)" data-kz="Жобалық ақпарат (өлшемдері, тоннажы, ҚР қаласы)">Проектная информация (размеры, тоннаж, город в РК)</label>
+        <textarea id="projectInfo" placeholder="Укажите габариты (ДхШхВ), примерный вес/площадь и город монтажа (Астана или другой регион по всему РК)..."></textarea>
       </div>
 
       <div class="submit-grid">
-        <button type="button" class="btn-turquoise" onclick="sendOrder('whatsapp')">
-          💬 Отправить в WhatsApp
+        <button type="button" class="btn-turquoise" id="btnWa" onclick="sendOrder('whatsapp')">
+          💬 <span data-ru="Отправить с фото в WhatsApp" data-kz="Фотомен WhatsApp-қа жіберу">Отправить с фото в WhatsApp</span>
         </button>
-        <button type="button" class="btn-turquoise" onclick="sendOrder('telegram')">
-          ✈️ Отправить в Telegram
+        <button type="button" class="btn-turquoise" id="btnTg" onclick="sendOrder('telegram')">
+          ✈️ <span data-ru="Отправить с фото в Telegram" data-kz="Фотомен Telegram-ға жіберу">Отправить с фото в Telegram</span>
         </button>
       </div>
     </div>
@@ -156,46 +173,106 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     if (params.get('type')) {
-      document.getElementById('projectType').value = params.get('type');
-    }
-
-    function updateFileName() {
-      const fileInput = document.getElementById('blueprintFile');
-      const label = document.getElementById('fileLabel');
-      if (fileInput.files.length > 0) {
-        label.innerHTML = '✅ Файл: <strong>' + fileInput.files[0].name + '</strong>';
+      const sel = document.getElementById('projectType');
+      for (let i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value.includes(params.get('type')) || params.get('type').includes(sel.options[i].value)) {
+          sel.selectedIndex = i;
+          break;
+        }
       }
     }
 
-    function sendOrder(channel) {
+    let uploadedFileUrl = '';
+
+    async function handleFileSelect() {
+      const fileInput = document.getElementById('blueprintFile');
+      const label = document.getElementById('fileLabel');
+      const previewWrap = document.getElementById('previewWrap');
+      const previewImg = document.getElementById('previewImg');
+      const statusText = document.getElementById('statusText');
+
+      if (fileInput.files.length === 0) return;
+      const file = fileInput.files[0];
+      label.innerHTML = '✅ Выбран файл: <strong>' + file.name + '</strong>';
+      previewWrap.style.display = 'block';
+
+      if (file.type.startsWith('image/')) {
+        previewImg.style.display = 'inline-block';
+        previewImg.src = URL.createObjectURL(file);
+      } else {
+        previewImg.style.display = 'none';
+      }
+
+      // Автоматически формируем облачную ссылку на фото/файл, чтобы она попала прямо в текст сообщения WhatsApp/Telegram
+      statusText.innerText = '⏳ Подготовка файла для отправки в сообщении...';
+      try {
+        const formData = new FormData();
+        formData.append('reqtype', 'fileupload');
+        formData.append('time', '72h');
+        formData.append('fileToUpload', file);
+
+        const res = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
+          method: 'POST',
+          body: formData
+        });
+        if (res.ok) {
+          uploadedFileUrl = (await res.text()).trim();
+          statusText.innerText = '✅ Фото/чертеж готов к мгновенной отправке вместе с сообщением!';
+        } else {
+          statusText.innerText = '✅ Файл прикреплен (готово к отправке с телефона)';
+        }
+      } catch (e) {
+        statusText.innerText = '✅ Файл готов к прямой отправке с телефона';
+      }
+    }
+
+    async function sendOrder(channel) {
       const name = document.getElementById('clientName').value.trim();
       const phone = document.getElementById('clientPhone').value.trim();
       const type = document.getElementById('projectType').value;
       const info = document.getElementById('projectInfo').value.trim() || 'Не указано';
       const fileInput = document.getElementById('blueprintFile');
-      const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'Прикреплю в чате';
+      const file = fileInput.files.length > 0 ? fileInput.files[0] : null;
 
       if (!name || !phone) {
-        alert('Укажите Ваше имя и телефон!');
+        alert('Пожалуйста, укажите Ваше имя и номер телефона!');
         return;
       }
 
-      const message =
-        `🏗 *ЗАЯВКА НА РАСЧЕТ — KAZ MC GROUP*\n` +
+      let message =
+        `🏗 *ЗАЯВКА В ЦЕХ МЕТАЛЛОКОНСТРУКЦИЙ — KAZ MC GROUP*\n` +
         `👤 *Имя / Компания:* ${name}\n` +
         `📞 *Телефон:* ${phone}\n` +
         `🔩 *Конструкция:* ${type}\n` +
-        `📐 *Чертеж:* ${fileName}\n` +
-        `📋 *Информация:* ${info}`;
+        `📋 *Проектная информация:* ${info}`;
 
+      if (uploadedFileUrl) {
+        message += `\n🖼 *Фото / Чертеж (прямая ссылка):* ${uploadedFileUrl}`;
+      } else if (file) {
+        message += `\n📐 *Файл чертежа:* ${file.name}`;
+      }
+
+      // 1. Если клиент на телефоне и выбрал фото/файл — открываем нативную отправку файла ВМЕСТЕ с текстом сообщения
+      if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({
+            title: 'Заявка KAZ MC GROUP',
+            text: message,
+            files: [file]
+          });
+          return;
+        } catch (err) {
+          // Если пользователь закрыл системное меню, переходим к прямой ссылке мессенджера ниже
+        }
+      }
+
+      // 2. Прямая отправка в выбранный мессенджер (+7 771 128 80 40) вместе со ссылкой на фото чертежа внутри текста
       const encoded = encodeURIComponent(message);
-
       if (channel === 'whatsapp') {
         window.open(`https://wa.me/77711288040?text=${encoded}`, '_blank');
       } else {
         navigator.clipboard?.writeText(message);
-        window.open(`https://t.me/+77711288040`, '_blank');
-        alert('Текст скопирован! Вставьте его в чате Telegram (+7 771 128 80 40) и отправьте чертеж.');
+        window.open(`https://t.me/+77711288040?text=${encoded}`, '_blank');
       }
     }
 

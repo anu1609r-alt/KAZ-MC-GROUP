@@ -17,23 +17,34 @@
       --text-muted: #94a3b8;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Montserrat', sans-serif; background: var(--bg-main); color: var(--text-main); line-height: 1.5; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-top: 94px;
+    }
     a { text-decoration: none; color: inherit; }
 
+    /* УМНАЯ ШАПКА */
     header {
-      position: sticky; top: 0; z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       background: rgba(9, 13, 20, 0.96); backdrop-filter: blur(10px);
-      border-bottom: 2px solid var(--border); padding: 12px 16px;
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+      border-bottom: 2px solid var(--border); padding: 10px 16px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+      transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
     }
+    header.nav-hidden { transform: translateY(-105%); }
+
     .logo-wrap { display: flex; align-items: center; gap: 8px; }
-    .logo-wrap img { height: 38px; width: auto; }
-    .logo-fallback { background: linear-gradient(135deg, var(--turquoise), #0077ff); color: #000; font-weight: 900; padding: 6px 10px; font-size: 14px; border-radius: 4px; }
-    .brand-name { font-size: 16px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
+    .logo-wrap img { height: 36px; width: auto; }
+    .logo-fallback { background: linear-gradient(135deg, var(--turquoise), #0077ff); color: #000; font-weight: 900; padding: 5px 9px; font-size: 13px; border-radius: 4px; }
+    .brand-name { font-size: 15px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
     .brand-name span { color: var(--turquoise); }
 
-    nav { display: flex; gap: 14px; align-items: center; width: 100%; justify-content: space-around; padding-top: 8px; border-top: 1px solid var(--border); }
-    nav a { font-weight: 700; font-size: 12px; text-transform: uppercase; color: var(--text-muted); }
+    nav { display: flex; gap: 12px; align-items: center; width: 100%; justify-content: space-around; padding-top: 8px; border-top: 1px solid var(--border); }
+    nav a { font-weight: 700; font-size: 12px; text-transform: uppercase; color: var(--text-muted); padding: 4px 0; }
     nav a.active { color: var(--turquoise); }
 
     .lang-switch { display: flex; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
@@ -48,7 +59,7 @@
     }
     .btn-turquoise:hover { background: var(--turquoise-dark); }
 
-    .container { max-width: 1240px; margin: 0 auto; padding: 28px 16px; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 24px 16px; }
     .page-title { font-size: 24px; font-weight: 900; text-transform: uppercase; margin-bottom: 8px; }
     .page-title span { color: var(--turquoise); }
     .page-sub { color: var(--text-muted); font-size: 13px; margin-bottom: 24px; }
@@ -69,7 +80,6 @@
     .tags { display: flex; flex-wrap: wrap; gap: 6px; }
     .tag { background: #1a2433; border: 1px solid var(--border); padding: 4px 8px; font-size: 11px; font-weight: 700; border-radius: 4px; color: var(--turquoise); }
 
-    /* БЛОК ГОСТ И СНИП */
     .gost-box {
       margin-top: 40px; background: var(--bg-card); border: 2px solid var(--border);
       border-top: 4px solid var(--turquoise); padding: 22px 16px; border-radius: 8px;
@@ -84,6 +94,7 @@
     footer { background: #06090e; border-top: 2px solid var(--border); padding: 25px 16px; text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 40px; }
 
     @media (min-width: 768px) {
+      body { padding-top: 72px; }
       header { padding: 15px 5%; }
       nav { width: auto; border-top: none; padding-top: 0; gap: 25px; }
       nav a { font-size: 14px; }
@@ -96,7 +107,7 @@
 </head>
 <body>
 
-  <header>
+  <header id="mainHeader">
     <a href="index.html" class="logo-wrap">
       <img src="images/logo.png" alt="KAZ MC GROUP" onerror="this.style.display='none'; document.getElementById('logo-fb').style.display='block';">
       <div id="logo-fb" class="logo-fallback" style="display:none;">KAZ MC</div>
@@ -118,7 +129,6 @@
     <p class="page-sub" data-ru="Цех металлоконструкций KAZ MC GROUP изготавливает несущие и ограждающие конструкции в Астане и по всему РК. Все работы ведутся строго согласно проектов (КМ, КМД) или по ГОСТу и СНиПу с гарантией минимум 1 год." data-kz="KAZ MC GROUP металл конструкциялар цехы Астанада және бүкіл ҚР бойынша тірек және қоршау конструкцияларын дайындайды. Барлық жұмыстар жобаларға, МЕМСТ пен ҚНжЕ-ге сәйкес кемінде 1 жыл кепілдікпен жүргізіледі.">Цех металлоконструкций KAZ MC GROUP изготавливает несущие и ограждающие конструкции в Астане и по всему РК. Все работы ведутся строго согласно проектов (КМ, КМД) или по ГОСТу и СНиПу с гарантией минимум 1 год.</p>
 
     <div class="catalog-grid">
-      <!-- 1 -->
       <div class="cat-card">
         <div>
           <h3 data-ru="01. Прямостенные и арочные ангары" data-kz="01. Тік қабырғалы және аркалы ангарлар">01. Прямостенные и арочные ангары</h3>
@@ -129,7 +139,6 @@
         <a href="order.html?type=Ангары прямостенные и арочные" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
-      <!-- 2 -->
       <div class="cat-card">
         <div>
           <h3 data-ru="02. Склады, логистические комплексы и зернохранилища" data-kz="02. Қоймалар мен астық қоймалары">02. Склады, логистические комплексы и зернохранилища</h3>
@@ -140,7 +149,6 @@
         <a href="order.html?type=Склады и зернохранилища" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
-      <!-- 3 -->
       <div class="cat-card">
         <div>
           <h3 data-ru="03. Металлические каркасы зданий (Колонны, Балки)" data-kz="03. Ғимараттардың металл қаңқалары">03. Металлические каркасы зданий (Колонны, Балки)</h3>
@@ -151,7 +159,6 @@
         <a href="order.html?type=Каркасы зданий и колонны" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
-      <!-- 4 -->
       <div class="cat-card">
         <div>
           <h3 data-ru="04. Стропильные и подстропильные фермы, связи" data-kz="04. Стропилалық фермалар мен байланыстар">04. Стропильные и подстропильные фермы, связи</h3>
@@ -162,7 +169,6 @@
         <a href="order.html?type=Металлические фермы и связи" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
-      <!-- 5 -->
       <div class="cat-card">
         <div>
           <h3 data-ru="05. Автомойки, СТО, павильоны и ТРЦ" data-kz="05. Автожуу, ТҚС және павильондар">05. Автомойки, СТО, павильоны и ТРЦ</h3>
@@ -173,7 +179,6 @@
         <a href="order.html?type=Каркас СТО / Автомойки / Павильона" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
-      <!-- 6 -->
       <div class="cat-card">
         <div>
           <h3 data-ru="06. Промышленные и частные навесы, козырьки" data-kz="06. Өнеркәсіптік және жеке бастырмалар">06. Промышленные и частные навесы, козырьки</h3>
@@ -184,7 +189,6 @@
         <a href="order.html?type=Навесы и козырьки" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
-      <!-- 7 -->
       <div class="cat-card">
         <div>
           <h3 data-ru="07. Лестницы, площадки обслуживания и стремянки" data-kz="07. Баспалдақтар мен қызмет көрсету алаңдары">07. Лестницы, площадки обслуживания и стремянки</h3>
@@ -195,7 +199,6 @@
         <a href="order.html?type=Лестницы и площадки" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
-      <!-- 8 -->
       <div class="cat-card">
         <div>
           <h3 data-ru="08. Промышленные и въездные ворота" data-kz="08. Өнеркәсіптік және кіру қақпалары">08. Промышленные и въездные ворота</h3>
@@ -206,7 +209,6 @@
         <a href="order.html?type=Ворота промышленные" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
-      <!-- 9 -->
       <div class="cat-card">
         <div>
           <h3 data-ru="09. Ограждающие конструкции, перила и заборы" data-kz="09. Қоршау конструкциялары мен перилалар">09. Ограждающие конструкции, перила и заборы</h3>
@@ -217,7 +219,6 @@
         <a href="order.html?type=Ограждающие конструкции и заборы" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
-      <!-- 10 -->
       <div class="cat-card">
         <div>
           <h3 data-ru="10. Закладные детали, анкерные блоки и нестандартные МК" data-kz="10. Бекіту бөлшектері және стандартты емес МК">10. Закладные детали, анкерные блоки и нестандартные МК</h3>
@@ -229,7 +230,6 @@
       </div>
     </div>
 
-    <!-- СВОДКА ГОСТ И СНИП -->
     <div class="gost-box">
       <h2 data-ru="Применяемые стандарты ГОСТ и СНиП в цеху KAZ MC GROUP" data-kz="KAZ MC GROUP цехында қолданылатын МЕМСТ және ҚНжЕ стандарттары">Применяемые стандарты ГОСТ и СНиП в цеху KAZ MC GROUP</h2>
       <div class="gost-list">
@@ -258,6 +258,19 @@
   </footer>
 
   <script>
+    // Скрытие/показ шапки при скролле (свайпе)
+    let lastScrollY = window.scrollY;
+    const headerEl = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+      const currentY = window.scrollY;
+      if (currentY > lastScrollY && currentY > 65) {
+        headerEl.classList.add('nav-hidden');
+      } else {
+        headerEl.classList.remove('nav-hidden');
+      }
+      lastScrollY = currentY <= 0 ? 0 : currentY;
+    }, { passive: true });
+
     let currentLang = localStorage.getItem('kazmc_lang') || 'ru';
     function setLang(lang) {
       currentLang = lang;

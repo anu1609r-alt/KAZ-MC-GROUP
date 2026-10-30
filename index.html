@@ -24,36 +24,43 @@
       color: var(--text-main);
       line-height: 1.5;
       overflow-x: hidden;
+      padding-top: 94px;
       -webkit-tap-highlight-color: transparent;
     }
     a { text-decoration: none; color: inherit; }
 
-    /* МОБИЛЬНАЯ ШАПКА */
+    /* УМНАЯ ШАПКА (ПРЯЧЕТСЯ ПРИ СВАЙПЕ ВНИЗ, ПОЯВЛЯЕТСЯ ПРИ СВАЙПЕ ВВЕРХ) */
     header {
-      position: sticky; top: 0; z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       background: rgba(9, 13, 20, 0.96);
       backdrop-filter: blur(10px);
       border-bottom: 2px solid var(--border);
-      padding: 12px 16px;
+      padding: 10px 16px;
       display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 10px;
+      flex-wrap: wrap; gap: 8px;
+      transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
     }
+    header.nav-hidden {
+      transform: translateY(-105%);
+    }
+
     .logo-wrap { display: flex; align-items: center; gap: 8px; }
-    .logo-wrap img { height: 38px; width: auto; object-fit: contain; }
+    .logo-wrap img { height: 36px; width: auto; object-fit: contain; }
     .logo-fallback {
       background: linear-gradient(135deg, var(--turquoise), #0077ff);
-      color: #000; font-weight: 900; padding: 6px 10px; font-size: 14px; border-radius: 4px;
+      color: #000; font-weight: 900; padding: 5px 9px; font-size: 13px; border-radius: 4px;
     }
-    .brand-name { font-size: 16px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
+    .brand-name { font-size: 15px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
     .brand-name span { color: var(--turquoise); }
 
     nav {
-      display: flex; gap: 14px; align-items: center; width: 100%;
+      display: flex; gap: 12px; align-items: center; width: 100%;
       justify-content: space-around; padding-top: 8px; border-top: 1px solid var(--border);
     }
     nav a {
       font-weight: 700; font-size: 12px; text-transform: uppercase;
-      letter-spacing: 0.5px; color: var(--text-muted); transition: 0.25s; padding: 4px 0;
+      letter-spacing: 0.5px; color: var(--text-muted); transition: 0.2s; padding: 4px 0;
     }
     nav a:hover, nav a.active { color: var(--turquoise); }
 
@@ -94,7 +101,7 @@
 
     /* ГЛАВНЫЙ ЭКРАН */
     .hero {
-      padding: 28px 16px 36px;
+      padding: 24px 16px 36px;
       background: radial-gradient(circle at 80% 20%, rgba(0, 229, 255, 0.12), transparent 55%), #090d14;
       border-bottom: 2px solid var(--border);
     }
@@ -203,6 +210,7 @@
     }
 
     @media (min-width: 768px) {
+      body { padding-top: 72px; }
       header { padding: 15px 5%; }
       nav { width: auto; border-top: none; padding-top: 0; gap: 25px; }
       nav a { font-size: 14px; }
@@ -219,7 +227,7 @@
 </head>
 <body>
 
-  <header>
+  <header id="mainHeader">
     <a href="index.html" class="logo-wrap">
       <img src="images/logo.png" alt="KAZ MC GROUP" onerror="this.style.display='none'; document.getElementById('logo-fb').style.display='block';">
       <div id="logo-fb" class="logo-fallback" style="display:none;">KAZ MC</div>
@@ -247,9 +255,9 @@
         <h1 data-ru="Изготовление несущих и ограждающих <span>металлоконструкций</span>" data-kz="Тірек және қоршау <span>металл конструкцияларын</span> дайындау">
           Изготовление несущих и ограждающих <span>металлоконструкций</span>
         </h1>
-        <p data-ru="Собственный цех металлоконструкций KAZ MC GROUP. Производим работы в Астане и по всему РК (Казахстану): ангары, склады, каркасы зданий, навесы, лестницы, ворота и нестандартные изделия на заказ. Все работы ведутся согласно проектов или по ГОСТу и СНиПу."
+        <p data-ru="Собственный цех металлоконструкций KAZ MC GROUP. Производим работы в Астане и по всему РК: ангары, склады, каркасы зданий, навесы, лестницы, ворота и нестандартные изделия на заказ. Все работы ведутся согласно проектов или по ГОСТу и СНиПу."
            data-kz="KAZ MC GROUP жеке металл конструкциялар цехы. Астанада және бүкіл ҚР бойынша жұмыстар жүргіземіз: ангарлар, қоймалар, ғимарат қаңқалары, бастырмалар, баспалдақтар, қақпалар және тапсырыс бойынша стандартты емес бұйымдар. Барлық жұмыстар жобаларға немесе МЕМСТ пен ҚНжЕ-ге сәйкес жүргізіледі.">
-          Собственный цех металлоконструкций KAZ MC GROUP. Производим работы в Астане и по всему РК (Казахстану): ангары, склады, каркасы зданий, навесы, лестницы, ворота и нестандартные изделия на заказ. Все работы ведутся согласно проектов или по ГОСТу и СНиПу.
+          Собственный цех металлоконструкций KAZ MC GROUP. Производим работы в Астане и по всему РК: ангары, склады, каркасы зданий, навесы, лестницы, ворота и нестандартные изделия на заказ. Все работы ведутся согласно проектов или по ГОСТу и СНиПу.
         </p>
         <div class="hero-btns">
           <a href="order.html" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
@@ -304,7 +312,7 @@
           <h3 data-ru="Ангары и склады" data-kz="Ангарлар мен қоймалар">Ангары и склады</h3>
           <p data-ru="Изготовление и монтаж прямостенных, арочных и шатровых ангаров, зернохранилищ, овощехранилищ и складских комплексов." data-kz="Тік қабырғалы, аркалы ангарларды, астық қоймаларын және қойма кешендерін дайындау мен монтаждау.">Изготовление и монтаж прямостенных, арочных и шатровых ангаров, зернохранилищ, овощехранилищ и складских комплексов.</p>
         </div>
-        <a href="order.html?type=Ангары и склады" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+        <a href="order.html?type=Ангары прямостенные и арочные" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
       <div class="card">
@@ -313,7 +321,7 @@
           <h3 data-ru="Каркасы зданий" data-kz="Ғимарат қаңқалары">Каркасы зданий</h3>
           <p data-ru="Несущие металлические колонны, фермы, прогоны, балки перекрытия, связи и ростверки по проекту КМ/КМД." data-kz="КМ/КМД жобасы бойынша тірек металл бағандар, фермалар, арқалықтар мен байланыстар.">Несущие металлические колонны, фермы, прогоны, балки перекрытия, связи и ростверки по проекту КМ/КМД.</p>
         </div>
-        <a href="order.html?type=Каркасы зданий" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+        <a href="order.html?type=Каркасы зданий и колонны" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
       <div class="card">
@@ -322,7 +330,7 @@
           <h3 data-ru="Навесы и козырьки" data-kz="Бастырмалар мен күнқағарлар">Навесы и козырьки</h3>
           <p data-ru="Навесы для спецтехники, автопарковок, складов и входных групп с учетом ветровых и снеговых нагрузок." data-kz="Жел мен қар жүктемелерін ескере отырып, арнайы техникаға, автотұрақтарға арналған бастырмалар.">Навесы для спецтехники, автопарковок, складов и входных групп с учетом ветровых и снеговых нагрузок.</p>
         </div>
-        <a href="order.html?type=Навесы" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+        <a href="order.html?type=Навесы и козырьки" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
       <div class="card">
@@ -331,7 +339,7 @@
           <h3 data-ru="Лестницы и ограждения" data-kz="Баспалдақтар мен қоршаулар">Лестницы и ограждения</h3>
           <p data-ru="Маршевые, пожарные и эвакуационные лестницы, переходные площадки и ограждающие металлоконструкции." data-kz="Марштық, өрт сөндіру және эвакуациялық баспалдақтар, өткел алаңдары мен қоршау конструкциялары.">Маршевые, пожарные и эвакуационные лестницы, переходные площадки и ограждающие металлоконструкции.</p>
         </div>
-        <a href="order.html?type=Лестницы и ограждения" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+        <a href="order.html?type=Лестницы и площадки" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
       <div class="card">
@@ -340,7 +348,7 @@
           <h3 data-ru="Ворота промышленные" data-kz="Өнеркәсіптік қақпалар">Ворота промышленные</h3>
           <p data-ru="Откатные, распашные и утепленные ворота для цехов, ангаров, производственных баз и частных территорий." data-kz="Цехтарға, ангарларға және өндірістік базаларға арналған жылжымалы, ашылатын және жылытылған қақпалар.">Откатные, распашные и утепленные ворота для цехов, ангаров, производственных баз и частных территорий.</p>
         </div>
-        <a href="order.html?type=Ворота" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+        <a href="order.html?type=Ворота промышленные" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
 
       <div class="card">
@@ -349,7 +357,7 @@
           <h3 data-ru="Нестандартные изделия на заказ" data-kz="Тапсырыс бойынша стандартты емес бұйымдар">Нестандартные изделия на заказ</h3>
           <p data-ru="Закладные детали, эстакады, бункеры, опоры, рамы и любые металлоизделия по вашим чертежам." data-kz="Бекіту бөлшектері, эстакадалар, бункерлер, тіректер және сіздің сызбаларыңыз бойынша кез келген металл бұйымдары.">Закладные детали, эстакады, бункеры, опоры, рамы и любые металлоизделия по вашим чертежам.</p>
         </div>
-        <a href="order.html?type=Нестандартные изделия на заказ" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
+        <a href="order.html?type=Закладные детали и нестандартные изделия" class="btn-turquoise" data-ru="Узнать стоимость / Заказать расчет" data-kz="Бағасын білу / Есептеу">Узнать стоимость / Заказать расчет</a>
       </div>
     </div>
   </section>
@@ -394,6 +402,19 @@
   </div>
 
   <script>
+    // Скрытие/показ шапки при скролле (свайпе)
+    let lastScrollY = window.scrollY;
+    const headerEl = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+      const currentY = window.scrollY;
+      if (currentY > lastScrollY && currentY > 65) {
+        headerEl.classList.add('nav-hidden');
+      } else {
+        headerEl.classList.remove('nav-hidden');
+      }
+      lastScrollY = currentY <= 0 ? 0 : currentY;
+    }, { passive: true });
+
     let currentLang = localStorage.getItem('kazmc_lang') || 'ru';
     function setLang(lang) {
       currentLang = lang;
@@ -424,4 +445,21 @@
 
     function generateMetalReply(q) {
       const isKz = currentLang === 'kz';
-      const keys =
+      const keys = ['метал', 'цех', 'конструкц', 'ангар', 'склад', 'қойма', 'каркас', 'қаңқа', 'навес', 'бастырма', 'лестниц', 'баспалдақ', 'ворот', 'қақпа', 'нестандарт', 'гост', 'мемст', 'снип', 'гарант', 'кепілдік', 'цен', 'баға', 'стоимост', 'расчет', 'есеп', 'чертеж', 'сызба', 'монтаж', 'астан', 'рк', 'казахстан', 'қазақстан', 'ферм', 'колонн', 'балк', 'закладн', 'заказ', 'тапсырыс', 'телефон', 'whatsapp', 'telegram', 'привет', 'сәлем', 'здравств'];
+      if (!keys.some(k => q.includes(k))) {
+        return isKz
+          ? '⚠️ Кешіріңіз, мен тек KAZ MC GROUP цехының металл конструкцияларын дайындау және монтаждау бойынша сұрақтарға жауап беремін.'
+          : '⚠️ Извините, я отвечаю ТОЛЬКО на вопросы, связанные с работой нашего цеха металлоконструкций (ангары, склады, каркасы зданий, навесы, лестницы, ворота, ГОСТ/СНиП).';
+      }
+      if (q.includes('цен') || q.includes('стоимост') || q.includes('баға') || q.includes('расчет') || q.includes('есеп')) {
+        return isKz
+          ? 'Бағасы сызба мен тоннажға байланысты есептеледі. «Есептеу» бетінде сызбаның фотосын тіркеп, WhatsApp немесе Telegram-ға (+7 771 128 80 40) жіберіңіз.'
+          : 'Стоимость рассчитывается по вашему чертежу или ТЗ. Перейдите в раздел «Заказать расчет», выберите фото/файл чертежа и отправьте его нам в WhatsApp или Telegram: +7 771 128 80 40.';
+      }
+      return isKz
+        ? 'KAZ MC GROUP металл конструкциялар цехы нарықта 5 жылдан астам жұмыс істейді. Астанада және бүкіл ҚР бойынша МЕМСТ пен ҚНжЕ сәйкес жұмыс істейміз, кепілдік кемінде 1 жыл. Телефон: +7 771 128 80 40.'
+        : 'Наш цех металлоконструкций KAZ MC GROUP работает более 5 лет. Производим работы в Астане и по всему РК согласно проектов, ГОСТ и СНиП. Гарантия минимум 1 год. Связь: +7 771 128 80 40.';
+    }
+  </script>
+</body>
+</html>
